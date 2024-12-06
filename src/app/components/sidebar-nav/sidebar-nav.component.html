@@ -1,0 +1,17 @@
+<div class="sticky top-6 w-72">
+  @if(currentUser()){
+  <div class="flex justify-center gap-2 p-2">
+    <i class="material-icons text-neutral-50 text-3xl">account_circle</i>
+    <span class="text-neutral-50 font-normal text-2xl">{{
+      currentUser()?.displayName
+    }}</span>
+  </div>
+  }
+  <div
+    (click)="onLogout()"
+    class="flex justify-center gap-2 bg-neutral-800 opacity-40 bg-opacity-0 hover:bg-opacity-100 hover:opacity-100 transition duration-300 ease-in-out hover:cursor-pointer rounded-lg p-2 mt-2"
+  >
+    <i class="material-icons text-neutral-50 text-2xl">logout</i>
+    <span class="text-neutral-50 font-normal text-xl">Sign Out</span>
+  </div>
+</div>
