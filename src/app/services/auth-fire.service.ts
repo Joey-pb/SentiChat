@@ -6,7 +6,6 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   updateProfile,
-  user,
   UserCredential,
 } from '@angular/fire/auth';
 import { toSignal } from '@angular/core/rxjs-interop';
