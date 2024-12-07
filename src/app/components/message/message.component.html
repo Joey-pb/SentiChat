@@ -1,5 +1,7 @@
 <div
-  class="py-2 px-4 border-l-2 border-b-2 border-l-orange-300 border-b-neutral-800 rounded-2xl mb-2"
+  class="py-2 px-4 rounded-2xl mb-2 bg-opacity-25 border-b-2 border-neutral-800"
+  [colorizeSentiment]="sentiment.classification"
+  borderType="left"
 >
   <div class="text-neutral-400 p-0 font-bold flex align-middle gap-2">
     <div class="text-sm">{{ sentiment.user }}</div>
@@ -7,7 +9,6 @@
       {{ sentiment.timestamp | date : "MMM d, y h:mm a" }}
     </div>
   </div>
-
   <p class="text-neutral-200">
     {{ sentiment.text }}
   </p>

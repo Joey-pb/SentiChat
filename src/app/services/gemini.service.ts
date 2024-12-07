@@ -42,7 +42,7 @@ export class GeminiService {
     this.genAi = new GoogleGenerativeAI(environment.geminiApiKey);
   }
 
-  async analyzeSentiment(text: string) {
+  async analyzeSentiment(query: string | null) {
     const model = this.genAi.getGenerativeModel({
       model: 'gemini-1.5-flash',
       generationConfig: {
@@ -52,18 +52,20 @@ export class GeminiService {
     });
 
     const prompt = `
-    Analyze the sentiment of the text. 
+    Analyze the sentiment of the text. Analyze the sentiment in the context of discourse. 
 
-    Classify the text with a classification of [VERY NEGATIVE, NEGATIVE, SLIGHTLY NEGATIVE, NEUTRAL, SLIGHTLY POSITIVE, POSITIVE, VERY POSITIVE]. 
+    Classify the text with a classification of [NEGATIVE, NEUTRAL, POSITIVE]. 
 
-    If the text is abusive or dangerous flag it as abusive.
+    Only classify the text as NEGATIVE if it expresses hostility, agression, anger, or insults. Do not classify the text as NEGATIVE if it is just criticism or expresses disagreement, disapproval, dissatisfaction, or sadness. Feeling bad, sad, or physical pain is not the same as being negative.
+
+    If the text is abusive or dangerous flag it as abusive. Only flag the text if it could cause harm or threatens to cause harm to someone.
     
-    Give a short, descriptive point about the sentiment that begins with "Expresses". 
+    Give a short, descriptive point about the sentiment that begins with "Expresses" and is 7 words or less. 
     
     Provide a rating from -10 to 10.
     
-    The text is ${text}`;
+    The text is ${query}`;
     const result = await model.generateContent([prompt]);
-    return result.response.text();
+    return JSON.parse(result.response.text());
   }
 }

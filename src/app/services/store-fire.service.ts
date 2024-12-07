@@ -39,9 +39,13 @@ export class StoreFireService {
     });
   }
 
-  async postSentiment(sentiment: string): Promise<DocumentReference> {
+  async postSentiment(
+    sentiment: string,
+    classification: string | undefined
+  ): Promise<DocumentReference> {
     return await addDoc(this.sentiments, {
       text: sentiment,
+      classification: classification,
       user: this.authService.currentUser()!.displayName,
       timestamp: Timestamp.now(),
     } as Sentiment);
