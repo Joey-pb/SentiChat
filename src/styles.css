@@ -5,3 +5,43 @@
 body {
   background-color: #171717;
 }
+
+/* Sentiment analysis classification  */
+input:required.ng-touched.ng-invalid {
+  border: 1px solid red;
+}
+
+.amber-border-full {
+  border: 2px solid #f59e0b;
+}
+
+.green-border-full {
+  border: 2px solid #22c55e;
+}
+
+.red-border-full {
+  border: 2px solid #ef4444;
+}
+.neutral-border-full {
+  border: 2px solid #262626;
+}
+
+.amber-border-left {
+  border-left: 2px solid #f59e0b;
+  border-bottom: 2px solid #262626;
+}
+
+.green-border-left {
+  border-left: 2px solid #22c55e;
+  border-bottom: 2px solid #262626;
+}
+
+.red-border-left {
+  border-left: 2px solid #ef4444;
+  border-bottom: 2px solid #262626;
+}
+
+.neutral-border-left {
+  border-left: 2px solid #262626;
+  border-bottom: 2px solid #262626;
+}
