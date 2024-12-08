@@ -1,7 +1,19 @@
-<div class="grid grid-cols-[1fr_2fr_1fr] h-screen">
-  <div class="px-6 pt-6 ml-auto mr-auto">
+<div class="sm:grid sm:grid-flow-col h-screen">
+  <div
+    class="sm:px-6 sm:pt-6 sm:relative sm:-translate-x-0 fixed z-10 h-full ml-auto"
+    [ngClass]="
+      sidebarService.isOpen()
+        ? 'transition-transform translate-x-0 ease-in-out'
+        : 'transition-transform transform -translate-x-80 ease-in-out'
+    "
+  >
     <app-sidebar-nav />
   </div>
-  <div class="min-w-96"><app-chat /></div>
-  <div class="px-6 pt-6 ml-auto mr-auto"></div>
+  <div class="px-2">
+    <app-message-input />
+    <app-chat />
+  </div>
+  <!-- Right sidebar for planned additions -->
+  <div></div>
+  <!--  -->
 </div>

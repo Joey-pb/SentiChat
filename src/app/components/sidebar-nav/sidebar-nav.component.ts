@@ -5,6 +5,7 @@ import { NotificationService } from '../../services/notification.service';
 import { FirebaseError } from 'firebase/app';
 import { getFirebaseErrors } from '../../utilities/fire-errors';
 import { StoreFireService } from '../../services/store-fire.service';
+import { SidebarService } from '../../services/sidebar.service';
 
 @Component({
   selector: 'app-sidebar-nav',
@@ -16,6 +17,7 @@ export class SidebarNavComponent {
   authFireService = inject(AuthFireService);
   storeFireService = inject(StoreFireService);
   notificationService = inject(NotificationService);
+  sidebarService = inject(SidebarService);
   router = inject(Router);
   currentUser = this.authFireService.currentUser;
 

@@ -69,7 +69,7 @@ export class GeminiService {
       const result = await model.generateContent([prompt]);
       return JSON.parse(result.response.text());
     } catch (err: any) {
-      return err;
+      throw err;
     }
   }
 }

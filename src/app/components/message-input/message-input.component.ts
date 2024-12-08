@@ -13,6 +13,7 @@ import { ColorizeSentimentDirective } from '../../directives/colorize-sentiment.
 import { NotificationService } from '../../services/notification.service';
 import { getGeminiErrors } from '../../utilities/gemini-errors';
 import { getFirebaseErrors } from '../../utilities/fire-errors';
+import { SidebarService } from '../../services/sidebar.service';
 
 interface QueryResult {
   abusive?: boolean;
@@ -31,6 +32,7 @@ export class MessageInputComponent implements OnInit {
   geminiService = inject(GeminiService);
   storeFireService = inject(StoreFireService);
   notificationService = inject(NotificationService);
+  sidebarService = inject(SidebarService);
   sentiment = new FormControl('', Validators.required);
   hasQueryResult = false;
   queryResult: QueryResult = {};
@@ -83,5 +85,9 @@ export class MessageInputComponent implements OnInit {
     } finally {
       this.notificationService.hideLoading();
     }
+  }
+
+  toggleSidebar() {
+    this.sidebarService.toggle();
   }
 }
