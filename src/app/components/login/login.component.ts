@@ -1,31 +1,30 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthFireService } from '../../services/auth-fire.service';
 import { NotificationService } from '../../services/notification.service';
-import { LoadingComponent } from '../loading/loading.component';
+import { FirebaseError } from 'firebase/app';
+import { getFirebaseErrors } from '../../utilities/fire-errors';
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule, LoadingComponent],
+  imports: [ReactiveFormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
   authFireService = inject(AuthFireService);
   router = inject(Router);
-  notifications = inject(NotificationService);
-
+  notificationService = inject(NotificationService);
   fb = inject(FormBuilder);
 
   loginForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
-    password: ['', Validators.required],
+    password: ['', [Validators.required, Validators.minLength(6)]],
   });
-
-  // email = this.loginForm.get('email');
-  // password = this.loginForm.get('password');
+  email = this.loginForm.get('email');
+  password = this.loginForm.get('password');
 
   async onLogin() {
     const { email, password } = this.loginForm.value;
@@ -34,13 +33,19 @@ export class LoginComponent {
       return;
     }
     try {
-      this.notifications.showLoading();
+      this.notificationService.showLoading();
       await this.authFireService.login(email, password);
       this.router.navigate(['/chat']);
-      this.notifications.hideLoading();
+      this.notificationService.hideLoading();
     } catch (err: any) {
-      console.log(err);
+      this.firebaseError(err);
+    } finally {
+      this.notificationService.hideLoading();
     }
+  }
+
+  firebaseError(error: FirebaseError) {
+    this.notificationService.showModal(getFirebaseErrors(error));
   }
 
   async onGoogleSignIn() {

@@ -11,6 +11,7 @@ import { Sentiment } from '../models/sentiment.model';
 import { AuthFireService } from './auth-fire.service';
 import { Timestamp } from '@angular/fire/firestore';
 import { CollectionReference, DocumentReference } from 'firebase/firestore';
+import { Unsubscribe } from 'firebase/auth';
 
 @Injectable({
   providedIn: 'root',
@@ -23,31 +24,44 @@ export class StoreFireService {
     'sentiments'
   ) as CollectionReference<Sentiment>;
   chat = signal<Sentiment[]>([]);
+  unsubscribe!: Unsubscribe;
 
   getSentiments() {
-    const q = query(this.sentiments, orderBy('timestamp', 'desc'));
+    try {
+      const q = query(this.sentiments, orderBy('timestamp', 'desc'));
+      this.unsubscribe = onSnapshot(q, async (snapshot) => {
+        const updatedChat = await Promise.all(
+          snapshot.docs.map(async (doc) => {
+            const sentiment = { ...doc.data(), id: doc.id } as Sentiment;
+            sentiment.timestamp = sentiment.timestamp.toDate();
+            return sentiment;
+          })
+        );
+        this.chat.set(updatedChat);
+      });
+      return this.unsubscribe;
+    } catch (err: any) {
+      throw err;
+    }
+  }
 
-    return onSnapshot(q, async (snapshot) => {
-      const updatedChat = await Promise.all(
-        snapshot.docs.map(async (doc) => {
-          const sentiment = { ...doc.data(), id: doc.id } as Sentiment;
-          sentiment.timestamp = sentiment.timestamp.toDate();
-          return sentiment;
-        })
-      );
-      this.chat.set(updatedChat);
-    });
+  unsubscribeChat() {
+    return this.unsubscribe();
   }
 
   async postSentiment(
     sentiment: string,
     classification: string | undefined
   ): Promise<DocumentReference> {
-    return await addDoc(this.sentiments, {
-      text: sentiment,
-      classification: classification,
-      user: this.authService.currentUser()!.displayName,
-      timestamp: Timestamp.now(),
-    } as Sentiment);
+    try {
+      return await addDoc(this.sentiments, {
+        text: sentiment,
+        classification: classification,
+        user: this.authService.currentUser()!.displayName,
+        timestamp: Timestamp.now(),
+      } as Sentiment);
+    } catch (err: any) {
+      throw err;
+    }
   }
 }

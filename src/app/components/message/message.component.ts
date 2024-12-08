@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { Sentiment } from '../../models/sentiment.model';
 import { CommonModule } from '@angular/common';
 import { ColorizeSentimentDirective } from '../../directives/colorize-sentiment.directive';
@@ -10,5 +10,6 @@ import { ColorizeSentimentDirective } from '../../directives/colorize-sentiment.
   styleUrl: './message.component.css',
 })
 export class MessageComponent {
-  @Input({ required: true }) sentiment!: Sentiment;
+  // @Input({ required: true }) sentiment!: Sentiment;
+  sentiment = input.required<Sentiment>();
 }

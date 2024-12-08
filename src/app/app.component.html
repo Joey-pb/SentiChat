@@ -1,1 +1,4 @@
+@if(notificationService.showmodal()){
+<app-modal [message]="notificationService.modalMessage()" />
+} @if(notificationService.loading()){<app-loading />}
 <router-outlet />

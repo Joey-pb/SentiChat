@@ -8,38 +8,53 @@
           <input
             type="email"
             id="email"
-            class="w-full h-10 bg-neutral-700 p-4 rounded-md text-neutral-300 focus:outline-none"
+            class="w-full h-10 bg-neutral-700 p-4 rounded-md text-neutral-200 focus:outline-none"
             formControlName="email"
             required
           />
+          <div class="w-full h-5">
+            @if(email?.invalid && email?.touched){
+            <small class="text-red-600">Valid email required</small>
+            }
+          </div>
         </div>
-        <div class="mt-4">
+        <div class="">
           <label for="username" class="text-neutral-200 text-sm"
             >Username</label
           >
           <input
             type="text"
             id="username"
-            class="w-full h-10 bg-neutral-700 p-4 rounded-md text-neutral-300 focus:outline-none"
+            class="w-full h-10 bg-neutral-700 p-4 rounded-md text-neutral-200 focus:outline-none"
             formControlName="username"
             required
           />
+          <div class="w-full h-5">
+            @if(username?.invalid && username?.touched){
+            <small class="text-red-600">Username required</small>
+            }
+          </div>
         </div>
-        <div class="mt-4">
+        <div class="">
           <label for="password" class="text-neutral-200 mt-4 text-sm"
             >Password</label
           >
           <input
             type="password"
             id="password"
-            class="w-full h-10 bg-neutral-700 p-4 rounded-md text-neutral-300 focus:outline-none"
+            class="w-full h-10 bg-neutral-700 p-4 rounded-md text-neutral-200 focus:outline-none"
             formControlName="password"
             required
           />
+          <div class="w-full h-5">
+            @if(password?.invalid && password?.touched){
+            <small class="text-red-600">Valid password required</small>
+            }
+          </div>
         </div>
         <button
           type="submit"
-          class="disabled:opacity-40 bg-cyan-900 text-neutral-300 px-12 py-2 rounded-md w-full mt-4 hover:opacity-100 font-semibold enabled:hover:bg-cyan-900"
+          class="disabled:opacity-70 bg-cyan-900 enabled:hover:bg-cyan-700 text-neutral-200 mt-1 px-12 py-2 rounded-md w-full hover:opacity-100 font-semibold"
           [disabled]="registerForm.invalid"
         >
           Create Account

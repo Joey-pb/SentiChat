@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {
   FormControl,
   FormsModule,
@@ -10,6 +10,9 @@ import { GeminiService } from '../../services/gemini.service';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { ColorizeSentimentDirective } from '../../directives/colorize-sentiment.directive';
+import { NotificationService } from '../../services/notification.service';
+import { getGeminiErrors } from '../../utilities/gemini-errors';
+import { getFirebaseErrors } from '../../utilities/fire-errors';
 
 interface QueryResult {
   abusive?: boolean;
@@ -27,6 +30,7 @@ interface QueryResult {
 export class MessageInputComponent implements OnInit {
   geminiService = inject(GeminiService);
   storeFireService = inject(StoreFireService);
+  notificationService = inject(NotificationService);
   sentiment = new FormControl('', Validators.required);
   hasQueryResult = false;
   queryResult: QueryResult = {};
@@ -36,25 +40,29 @@ export class MessageInputComponent implements OnInit {
   }
 
   initializeSentimentAnalysis() {
-    this.sentiment.valueChanges
-      .pipe(
-        debounceTime(500),
-        distinctUntilChanged(),
-        switchMap((query: string | null) => {
-          if (query) {
-            return this.geminiService.analyzeSentiment(query);
+    try {
+      this.sentiment.valueChanges
+        .pipe(
+          debounceTime(500),
+          distinctUntilChanged(),
+          switchMap((query: string | null) => {
+            if (query) {
+              return this.geminiService.analyzeSentiment(query);
+            }
+            return of(null);
+          })
+        )
+        .subscribe((result) => {
+          if (result) {
+            this.queryResult = result[0] as QueryResult;
+            this.toggleQueryResult();
+          } else {
+            this.queryResult = {};
           }
-          return of(null);
-        })
-      )
-      .subscribe((result) => {
-        if (result) {
-          this.queryResult = result[0] as QueryResult;
-          this.toggleQueryResult();
-        } else {
-          this.queryResult = {};
-        }
-      });
+        });
+    } catch (err: any) {
+      this.notificationService.showModal(getGeminiErrors(err));
+    }
   }
 
   toggleQueryResult() {
@@ -62,10 +70,18 @@ export class MessageInputComponent implements OnInit {
   }
 
   async onPostSentiment() {
-    await this.storeFireService.postSentiment(
-      this.sentiment.value as string,
-      this.queryResult.classification
-    );
-    this.sentiment.reset();
+    try {
+      this.notificationService.showLoading();
+      await this.storeFireService.postSentiment(
+        this.sentiment.value as string,
+        this.queryResult.classification
+      );
+      this.sentiment.reset();
+      this.notificationService.hideLoading();
+    } catch (err: any) {
+      this.notificationService.showModal(getFirebaseErrors(err));
+    } finally {
+      this.notificationService.hideLoading();
+    }
   }
 }

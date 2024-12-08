@@ -3,7 +3,7 @@
     <div class="flex gap-1 align-middle justify-center">
       <input
         placeholder="write your sentiments..."
-        class="w-full h-12 bg-neutral-700 p-4 rounded-full text-neutral-50 focus:outline-none"
+        class="w-full h-12 bg-neutral-700 p-4 rounded-full text-neutral-200 focus:outline-none"
         [formControl]="sentiment"
         (input)="hasQueryResult = false"
       />
@@ -11,7 +11,6 @@
     <div
       class="text-neutral-200 justify-center font-semibold text-sm h-6 mt-2 rounded-full text-center"
       [colorizeSentiment]="queryResult.classification"
-      borderType="full"
     >
       @if(queryResult.abusive){ Unable to post abusive content }@else {
 
@@ -21,7 +20,7 @@
     <button
       [disabled]="!hasQueryResult || sentiment.invalid || queryResult.abusive"
       type="submit"
-      class="disabled:opacity-70 bg-cyan-900 text-neutral-50 px-12 py-2 rounded-full w-full mt-2 font-semibold"
+      class="disabled:opacity-70 bg-cyan-900 enabled:hover:bg-cyan-700 text-neutral-200 px-12 py-2 rounded-full w-full mt-2 font-semibold"
     >
       Post Sentiment
     </button>
