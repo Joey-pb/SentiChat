@@ -15,7 +15,6 @@
             id="email"
             class="w-full h-10 bg-neutral-700 p-4 rounded-md text-neutral-200 focus:outline-none"
             formControlName="email"
-            required
           />
         </div>
         <div class="w-full h-5">
@@ -32,7 +31,6 @@
             id="password"
             class="w-full h-10 bg-neutral-700 p-4 rounded-md text-neutral-200 focus:outline-none"
             formControlName="password"
-            required
           />
         </div>
         <div class="w-full h-5">
@@ -42,7 +40,7 @@
         </div>
         <button
           type="submit"
-          class="disabled:opacity-70 bg-cyan-900 enabled:hover:bg-cyan-700 text-neutral-200 mt-1 px-12 py-2 rounded-md w-full font-semibold"
+          class="disabled:opacity-40 bg-cyan-900 enabled:hover:bg-cyan-700 text-neutral-200 mt-1 px-12 py-2 rounded-md w-full font-semibold"
           [disabled]="loginForm.invalid"
         >
           Login

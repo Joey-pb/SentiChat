@@ -10,7 +10,6 @@
             id="email"
             class="w-full h-10 bg-neutral-700 p-4 rounded-md text-neutral-200 focus:outline-none"
             formControlName="email"
-            required
           />
           <div class="w-full h-5">
             @if(email?.invalid && email?.touched){
@@ -27,7 +26,6 @@
             id="username"
             class="w-full h-10 bg-neutral-700 p-4 rounded-md text-neutral-200 focus:outline-none"
             formControlName="username"
-            required
           />
           <div class="w-full h-5">
             @if(username?.invalid && username?.touched){
@@ -44,7 +42,6 @@
             id="password"
             class="w-full h-10 bg-neutral-700 p-4 rounded-md text-neutral-200 focus:outline-none"
             formControlName="password"
-            required
           />
           <div class="w-full h-5">
             @if(password?.invalid && password?.touched){
@@ -54,7 +51,7 @@
         </div>
         <button
           type="submit"
-          class="disabled:opacity-70 bg-cyan-900 enabled:hover:bg-cyan-700 text-neutral-200 mt-1 px-12 py-2 rounded-md w-full hover:opacity-100 font-semibold"
+          class="disabled:opacity-40 bg-cyan-900 enabled:hover:bg-cyan-700 text-neutral-200 mt-1 px-12 py-2 rounded-md w-full hover:opacity-100 font-semibold"
           [disabled]="registerForm.invalid"
         >
           Create Account
