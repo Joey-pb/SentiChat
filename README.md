@@ -79,5 +79,5 @@ To deploy SentiChat to a production environment, refer to the official [Angular 
 ## Additional Resources and Notes
 
 - For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
-- Refer to the official [Firebase documentation](https://firebase.google.com/docs) for detailed information on configuration and data management:
+- Refer to the official [Firebase documentation](https://firebase.google.com/docs) for detailed information on configuration and data management.
 - Feel free to customize the application further according to your needs.
