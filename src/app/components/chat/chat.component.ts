@@ -1,6 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { MessageComponent } from '../message/message.component';
-import { MessageInputComponent } from '../message-input/message-input.component';
 import { StoreFireService } from '../../services/store-fire.service';
 import { Sentiment } from '../../models/sentiment.model';
 import { NotificationService } from '../../services/notification.service';
@@ -9,7 +8,7 @@ import { Unsubscribe } from 'firebase/firestore';
 
 @Component({
   selector: 'app-chat',
-  imports: [MessageComponent, MessageInputComponent],
+  imports: [MessageComponent],
   templateUrl: './chat.component.html',
   styleUrl: './chat.component.css',
 })
