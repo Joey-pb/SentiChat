@@ -6,6 +6,7 @@ import { environment } from '../../environments/environment';
   providedIn: 'root',
 })
 export class GeminiService {
+  private API_KEY: string = environment.geminiApiKey;
   private genAi: GoogleGenerativeAI;
   private schema = {
     description: 'Sentiment Analysis',
@@ -39,7 +40,7 @@ export class GeminiService {
   };
 
   constructor() {
-    this.genAi = new GoogleGenerativeAI(environment.geminiApiKey);
+    this.genAi = new GoogleGenerativeAI(this.API_KEY);
   }
 
   async analyzeSentiment(query: string | null) {
