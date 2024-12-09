@@ -7,7 +7,6 @@ import { RegisterComponent } from '../register/register.component';
   selector: 'app-landing',
   imports: [LoginComponent, RegisterComponent],
   templateUrl: './landing.component.html',
-  styleUrl: './landing.component.css',
 })
 export class LandingComponent {
   showLogin = true;

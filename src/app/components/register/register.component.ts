@@ -10,7 +10,6 @@ import { getFirebaseErrors } from '../../utilities/fire-errors';
   selector: 'app-register',
   imports: [ReactiveFormsModule],
   templateUrl: './register.component.html',
-  styleUrl: './register.component.css',
 })
 export class RegisterComponent {
   authFireService = inject(AuthFireService);

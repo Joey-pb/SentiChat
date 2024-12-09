@@ -9,7 +9,6 @@ import { FirebaseError } from 'firebase/app';
   selector: 'app-chat',
   imports: [MessageComponent],
   templateUrl: './chat.component.html',
-  styleUrl: './chat.component.css',
 })
 export class ChatComponent implements OnInit {
   storeFireService = inject(StoreFireService);

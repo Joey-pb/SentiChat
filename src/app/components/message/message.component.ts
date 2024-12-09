@@ -7,7 +7,6 @@ import { ColorizeSentimentDirective } from '../../directives/colorize-sentiment.
   selector: 'app-message',
   imports: [CommonModule, ColorizeSentimentDirective],
   templateUrl: './message.component.html',
-  styleUrl: './message.component.css',
 })
 export class MessageComponent {
   // @Input({ required: true }) sentiment!: Sentiment;

@@ -9,7 +9,6 @@ import { MessageInputComponent } from '../components/message-input/message-input
   selector: 'app-layout',
   imports: [ChatComponent, SidebarNavComponent, NgClass, MessageInputComponent],
   templateUrl: './layout.component.html',
-  styleUrl: './layout.component.css',
 })
 export class LayoutComponent {
   sidebarService = inject(SidebarService);

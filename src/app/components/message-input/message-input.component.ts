@@ -26,7 +26,6 @@ interface QueryResult {
   selector: 'app-message-input',
   imports: [ReactiveFormsModule, FormsModule, ColorizeSentimentDirective],
   templateUrl: './message-input.component.html',
-  styleUrl: './message-input.component.css',
 })
 export class MessageInputComponent implements OnInit {
   geminiService = inject(GeminiService);

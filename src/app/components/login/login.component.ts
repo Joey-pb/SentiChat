@@ -11,7 +11,6 @@ import { getFirebaseErrors } from '../../utilities/fire-errors';
   selector: 'app-login',
   imports: [ReactiveFormsModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css',
 })
 export class LoginComponent {
   authFireService = inject(AuthFireService);
