@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { GoogleGenerativeAI, SchemaType } from '@google/generative-ai';
-import { environment } from '../../environments/environment.development';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
