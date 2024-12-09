@@ -4,7 +4,6 @@ import { StoreFireService } from '../../services/store-fire.service';
 import { Sentiment } from '../../models/sentiment.model';
 import { NotificationService } from '../../services/notification.service';
 import { FirebaseError } from 'firebase/app';
-import { Unsubscribe } from 'firebase/firestore';
 
 @Component({
   selector: 'app-chat',
@@ -16,7 +15,6 @@ export class ChatComponent implements OnInit {
   storeFireService = inject(StoreFireService);
   notificationService = inject(NotificationService);
   sentiments: Sentiment[] = [];
-  sentimentUnsubscribe!: Unsubscribe;
 
   ngOnInit() {
     this.notificationService.showLoading();
