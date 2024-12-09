@@ -4,7 +4,7 @@ SentiChat is a real-time chat application generated using [Angular CLI](https://
 
 ## Features
 
-- **User Authentication:** Secure login and registration useing [Firebase Authentication](https://firebase.google.com/).
+- **User Authentication:** Secure login and registration using [Firebase Authentication](https://firebase.google.com/).
 - **Real-Time Chat:** Send and receive messages with real-time updates powered by [Firestore](https://firebase.google.com/).
 - **Sentiment Analysis:** Analyze the sentiment of messages using the [Google Gemini API](https://ai.google.dev/gemini-api/docs).
 
