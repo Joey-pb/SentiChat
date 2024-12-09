@@ -4,8 +4,7 @@ import { Directive, ElementRef, Input } from '@angular/core';
   selector: '[colorizeSentiment]',
 })
 export class ColorizeSentimentDirective {
-  borderClass = '';
-  currentClass = '';
+  private currentClass = '';
 
   @Input() borderType: 'border-full' | 'border-left' = 'border-full';
   @Input() set colorizeSentiment(classification: string | undefined) {
@@ -26,24 +25,24 @@ export class ColorizeSentimentDirective {
 
   constructor(private el: ElementRef) {}
 
-  changeBorder(color: string) {
+  private changeBorder(color: string) {
     this.removeCurrentClass();
     this.setCurrentClass(`${color}-`);
     this.addBorderClass();
   }
 
-  setCurrentClass(color: string) {
+  private setCurrentClass(color: string) {
     this.currentClass = `${color}${this.borderType}`;
   }
 
-  removeCurrentClass() {
+  private removeCurrentClass() {
     if (!this.currentClass) {
       return;
     }
     this.el.nativeElement.classList.remove(this.currentClass);
   }
 
-  addBorderClass() {
+  private addBorderClass() {
     return this.el.nativeElement.classList.add(this.currentClass);
   }
 }
