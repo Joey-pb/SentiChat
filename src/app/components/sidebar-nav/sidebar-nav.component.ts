@@ -25,7 +25,7 @@ export class SidebarNavComponent {
       this.notificationService.showLoading();
       this.storeFireService.unsubscribeChat();
       await this.authFireService.logout();
-      this.router.navigate(['/home']);
+      this.router.navigate(['/']);
     } catch (error: any) {
       this.firebaseError(error);
     } finally {
