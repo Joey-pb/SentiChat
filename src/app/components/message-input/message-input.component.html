@@ -6,12 +6,15 @@
         (click)="toggleSidebar()"
         >menu</i
       >
-      <input
+      <textarea
+        class="w-full h- bg-neutral-700 p-4 rounded-3xl text-neutral-200 focus:outline-none focus:h-44 overflow-hidden resize-none"
+        rows="1"
+        maxlength="240"
         placeholder="write your sentiments..."
-        class="w-full h-12 bg-neutral-700 p-4 rounded-full text-neutral-200 focus:outline-none"
         [formControl]="sentiment"
         (input)="hasQueryResult = false"
-      />
+        [ngClass]=""
+      ></textarea>
     </div>
     <div
       class="text-neutral-200 justify-center font-semibold text-sm h-6 mt-2 rounded-full text-center"

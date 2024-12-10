@@ -5,6 +5,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { NgClass } from '@angular/common';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { of } from 'rxjs';
 
@@ -22,7 +23,12 @@ import { QueryResult } from '../../models/query-result.model';
 
 @Component({
   selector: 'app-message-input',
-  imports: [ReactiveFormsModule, FormsModule, ColorizeSentimentDirective],
+  imports: [
+    ReactiveFormsModule,
+    FormsModule,
+    ColorizeSentimentDirective,
+    NgClass,
+  ],
   templateUrl: './message-input.component.html',
 })
 export class MessageInputComponent implements OnInit {
@@ -30,7 +36,10 @@ export class MessageInputComponent implements OnInit {
   storeFireService = inject(StoreFireService);
   notificationService = inject(NotificationService);
   sidebarService = inject(SidebarService);
-  sentiment = new FormControl('', Validators.required);
+  sentiment = new FormControl('', [
+    Validators.required,
+    Validators.maxLength(240),
+  ]);
   hasQueryResult = false;
   queryResult: QueryResult = {};
 
