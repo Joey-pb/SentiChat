@@ -2,6 +2,8 @@
 
 SentiChat is a real-time chat application built with Angular and Tailwind CSS that facilitates conversations with a twist: sentiment analysis! The current version is for demonstration purposes.
 
+[Live Demo](https://sentichat.netlify.app/)
+
 ![SentiChat login screen](https://i.ibb.co/Ry8brJ4/login.jpg)
 ![SentiChat desktop](https://i.ibb.co/QFTFw6w/desktop.jpg)
 ![SentiChat mobile](https://i.ibb.co/wd1K2gG/mobile.jpg)
