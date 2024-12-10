@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 import { RegisterComponent } from './components/register/register.component';
 import { LayoutComponent } from './layout/layout.component';
-import { LoginComponent } from './components/login/login.component';
 import {
   canActivate,
   redirectLoggedInTo,
@@ -13,9 +12,8 @@ const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectLoggedInToChat = () => redirectLoggedInTo(['chat']);
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
-    path: 'home',
+    path: '',
     component: LandingComponent,
     ...canActivate(redirectLoggedInToChat),
   },
