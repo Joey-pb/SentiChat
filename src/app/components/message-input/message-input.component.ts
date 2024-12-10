@@ -18,12 +18,7 @@ import { ColorizeSentimentDirective } from '../../directives/colorize-sentiment.
 import { getGeminiErrors } from '../../utilities/gemini-errors';
 import { getFirebaseErrors } from '../../utilities/fire-errors';
 
-interface QueryResult {
-  abusive?: boolean;
-  classification?: string;
-  description?: string;
-  rating?: number;
-}
+import { QueryResult } from '../../models/query-result.model';
 
 @Component({
   selector: 'app-message-input',
