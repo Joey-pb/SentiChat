@@ -1,8 +1,10 @@
 import { Component, inject } from '@angular/core';
-import { AuthFireService } from '../../services/auth-fire.service';
 import { Router } from '@angular/router';
-import { NotificationService } from '../../services/notification.service';
+
 import { FirebaseError } from 'firebase/app';
+
+import { AuthFireService } from '../../services/auth-fire.service';
+import { NotificationService } from '../../services/notification.service';
 import { getFirebaseErrors } from '../../utilities/fire-errors';
 import { StoreFireService } from '../../services/store-fire.service';
 import { SidebarService } from '../../services/sidebar.service';

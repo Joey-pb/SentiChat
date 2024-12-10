@@ -1,10 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-
 import { Router } from '@angular/router';
+
+import { FirebaseError } from 'firebase/app';
+
 import { AuthFireService } from '../../services/auth-fire.service';
 import { NotificationService } from '../../services/notification.service';
-import { FirebaseError } from 'firebase/app';
+
 import { getFirebaseErrors } from '../../utilities/fire-errors';
 
 @Component({

@@ -1,9 +1,13 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { MessageComponent } from '../message/message.component';
-import { StoreFireService } from '../../services/store-fire.service';
-import { Sentiment } from '../../models/sentiment.model';
-import { NotificationService } from '../../services/notification.service';
+
 import { FirebaseError } from 'firebase/app';
+
+import { MessageComponent } from '../message/message.component';
+
+import { Sentiment } from '../../models/sentiment.model';
+
+import { StoreFireService } from '../../services/store-fire.service';
+import { NotificationService } from '../../services/notification.service';
 
 @Component({
   selector: 'app-chat',

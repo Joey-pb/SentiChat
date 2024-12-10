@@ -5,15 +5,18 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { StoreFireService } from '../../services/store-fire.service';
-import { GeminiService } from '../../services/gemini.service';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { of } from 'rxjs';
-import { ColorizeSentimentDirective } from '../../directives/colorize-sentiment.directive';
+
+import { StoreFireService } from '../../services/store-fire.service';
+import { GeminiService } from '../../services/gemini.service';
 import { NotificationService } from '../../services/notification.service';
+import { SidebarService } from '../../services/sidebar.service';
+
+import { ColorizeSentimentDirective } from '../../directives/colorize-sentiment.directive';
+
 import { getGeminiErrors } from '../../utilities/gemini-errors';
 import { getFirebaseErrors } from '../../utilities/fire-errors';
-import { SidebarService } from '../../services/sidebar.service';
 
 interface QueryResult {
   abusive?: boolean;

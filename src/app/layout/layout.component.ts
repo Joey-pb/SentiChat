@@ -1,9 +1,11 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { NgClass } from '@angular/common';
+
 import { ChatComponent } from '../components/chat/chat.component';
 import { SidebarNavComponent } from '../components/sidebar-nav/sidebar-nav.component';
-import { NgClass } from '@angular/common';
-import { SidebarService } from '../services/sidebar.service';
 import { MessageInputComponent } from '../components/message-input/message-input.component';
+
+import { SidebarService } from '../services/sidebar.service';
 
 @Component({
   selector: 'app-layout',

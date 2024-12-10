@@ -9,6 +9,7 @@ import {
   UserCredential,
 } from '@angular/fire/auth';
 import { toSignal } from '@angular/core/rxjs-interop';
+
 import { GoogleAuthProvider, signOut } from 'firebase/auth';
 import { User } from 'firebase/auth';
 

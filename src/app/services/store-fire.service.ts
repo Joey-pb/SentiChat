@@ -6,12 +6,15 @@ import {
   onSnapshot,
   orderBy,
   query,
+  Timestamp,
 } from '@angular/fire/firestore';
-import { Sentiment } from '../models/sentiment.model';
-import { AuthFireService } from './auth-fire.service';
-import { Timestamp } from '@angular/fire/firestore';
+
 import { CollectionReference, DocumentReference } from 'firebase/firestore';
 import { Unsubscribe } from 'firebase/auth';
+
+import { AuthFireService } from './auth-fire.service';
+
+import { Sentiment } from '../models/sentiment.model';
 
 @Injectable({
   providedIn: 'root',
