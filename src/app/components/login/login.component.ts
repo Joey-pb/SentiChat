@@ -53,4 +53,9 @@ export class LoginComponent {
     await this.authFireService.googleSignIn();
     this.router.navigate(['/chat']);
   }
+
+  async onGithubSignIn() {
+    await this.authFireService.githubSignIn();
+    this.router.navigate(['/chat']);
+  }
 }

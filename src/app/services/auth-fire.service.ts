@@ -10,7 +10,7 @@ import {
 } from '@angular/fire/auth';
 import { toSignal } from '@angular/core/rxjs-interop';
 
-import { GoogleAuthProvider, signOut } from 'firebase/auth';
+import { GoogleAuthProvider, GithubAuthProvider, signOut } from 'firebase/auth';
 import { User } from 'firebase/auth';
 
 @Injectable({
@@ -21,6 +21,7 @@ export class AuthFireService {
   private currentUser$ = authState(this.firebaseAuth);
   currentUser = toSignal<User | null>(this.currentUser$);
   private googleProvider = new GoogleAuthProvider();
+  private githubProvider = new GithubAuthProvider();
 
   login(email: string, password: string): Promise<UserCredential> {
     return signInWithEmailAndPassword(this.firebaseAuth, email, password);
@@ -36,6 +37,9 @@ export class AuthFireService {
 
   googleSignIn(): Promise<UserCredential> {
     return signInWithPopup(this.firebaseAuth, this.googleProvider);
+  }
+  githubSignIn(): Promise<UserCredential> {
+    return signInWithPopup(this.firebaseAuth, this.githubProvider);
   }
 
   logout(): Promise<void> {

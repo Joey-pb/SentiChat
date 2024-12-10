@@ -1,11 +1,18 @@
 <div class="bg-neutral-900 p-4">
-  <div class="relative">
+  <div>
     <img
       (click)="onGoogleSignIn()"
-      src="google-sign-in.png"
+      src="google_SI.svg"
       alt="Google Sign In"
-      class="mt-4 mx-auto cursor-pointer"
+      class="mt-4 mx-auto cursor-pointer max-w-52"
     />
+    <img
+      (click)="onGithubSignIn()"
+      src="github_SI.svg"
+      alt="Github Sign In"
+      class="mt-4 mx-auto cursor-pointer max-w-52"
+    />
+
     <div>
       <form class="p-2" [formGroup]="loginForm" (ngSubmit)="onLogin()">
         <div class="mt-4">
