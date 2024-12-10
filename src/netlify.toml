@@ -1,8 +1,0 @@
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[build]
-command = "ng build && cp _redirects dist/_redirects"
-publish = "dist"
