@@ -1,24 +1,26 @@
 <div
   class="sticky top-6 bg-black bg-opacity-90 p-4 h-screen w-72 sm:bg-transparent"
 >
-  <i
-    class="sm:hidden text-red-500 text-3xl font-bold float-right cursor-pointer"
+  <span
+    role="button"
+    class="sm:hidden text-red-500 text-3xl font-bold cursor-pointer float-end"
     (click)="sidebarService.toggle()"
-    >&times;</i
+    >&times;</span
   >
   @if(currentUser()){
-  <div class="flex justify-center gap-2 p-2">
-    <i class="material-icons text-neutral-200 text-3xl">account_circle</i>
+  <div class="flex justify-start gap-2 p-2">
+    <span class="material-icons text-neutral-200 text-2xl">account_circle</span>
     <span class="text-neutral-200 font-normal text-2xl">{{
       currentUser()?.displayName
     }}</span>
   </div>
   }
   <div
+    role="button"
     (click)="onLogout()"
-    class="flex justify-center gap-2 bg-neutral-800 opacity-40 bg-opacity-0 hover:bg-opacity-100 hover:opacity-100 transition duration-300 ease-in-out hover:cursor-pointer rounded-lg p-2"
+    class="flex justify-start gap-2 bg-neutral-800 opacity-40 bg-opacity-0 hover:bg-opacity-100 hover:opacity-100 transition duration-300 ease-in-out hover:cursor-pointer rounded-lg p-2"
   >
-    <i class="material-icons text-neutral-200 text-2xl">logout</i>
+    <span class="material-icons text-neutral-200 text-2xl">logout</span>
     <span class="text-neutral-200 font-normal text-xl">Sign Out</span>
   </div>
   <div
